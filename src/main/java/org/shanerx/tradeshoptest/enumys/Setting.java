@@ -1,6 +1,6 @@
 /*
  *
- *                         Copyright (c) 2016-2019
+ *                         Copyright (c) 2016-2020
  *                SparklingComet @ http://shanerx.org
  *               KillerOfPie @ http://killerofpie.github.io
  *
@@ -23,12 +23,12 @@
  *
  */
 
-package io.tradeshop.github.tradeshoptest.enumys;
+package org.shanerx.tradeshoptest.enumys;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import io.tradeshop.github.tradeshoptest.TradeShopTest;
+import org.shanerx.tradeshoptest.TradeShopTest;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   ~
-  ~                         Copyright (c) 2016-2019
+  ~                         Copyright (c) 2016-2020s
   ~                SparklingComet @ http://shanerx.org
   ~               KillerOfPie @ http://killerofpie.github.io
   ~
@@ -102,20 +102,19 @@
             <id>CodeMC</id>
             <url>https://repo.codemc.org/repository/maven-public</url>
         </repository>
+
+        <repository>
+            <id>github</id>
+            <name>Tradeshop</name>
+            <url>https://maven.pkg.github.com/Tradeshop/TradeShop</url>
+        </repository>
     </repositories>
 
     <dependencies>
         <dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>bukkit</artifactId>
-            <version>1.14.4-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.14.4-R0.1-SNAPSHOT</version>
+            <version>1.15.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
@@ -124,6 +123,12 @@
             <artifactId>bstats-bukkit</artifactId>
             <version>1.5</version>
             <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.shanerx</groupId>
+            <artifactId>tradeshop</artifactId>
+            <version>2.1.0</version>
         </dependency>
     </dependencies>
 </project>
