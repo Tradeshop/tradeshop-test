@@ -1,0 +1,15 @@
+name: TradeShop-Test
+version: 0.0.1
+main: io.tradeshop.tradeshoptest.TradeShopTest
+api-version: 1.13
+load: POSTWORLD
+depend: [TradeShop]
+
+authors: [Lori00, KillerOfPie]
+description: A new powerful trading plugin.
+website: https://www.tradeshop.github.io
+
+commands:
+  tradeshoptest:
+    description: Core command for TradeShop-Test
+    aliases: [tst]
