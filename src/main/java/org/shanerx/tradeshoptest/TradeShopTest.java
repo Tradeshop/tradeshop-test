@@ -29,7 +29,7 @@ import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.shanerx.tradeshoptest.enumys.Setting;
-import org.shanerx.tradeshoptest.listeners.SuccessfulTradeListener;
+import org.shanerx.tradeshoptest.listeners.*;
 
 public class TradeShopTest extends JavaPlugin {
 
@@ -40,6 +40,14 @@ public class TradeShopTest extends JavaPlugin {
 
 		PluginManager pm = getServer().getPluginManager();
 
+        pm.registerEvents(new HopperShopAccessListener(this), this);
+        pm.registerEvents(new PlayerShopChangeListener(this), this);
+        pm.registerEvents(new PlayerShopCloseListener(this), this);
+        pm.registerEvents(new PlayerShopCreateListener(this), this);
+        pm.registerEvents(new PlayerShopDestroyListener(this), this);
+        pm.registerEvents(new PlayerShopInventoryOpenListener(this), this);
+        pm.registerEvents(new PlayerShopOpenListener(this), this);
+        pm.registerEvents(new PlayerTradeListener(this), this);
 		pm.registerEvents(new SuccessfulTradeListener(this), this);
 
 		if (Setting.ALLOW_METRICS.getBoolean()) {
