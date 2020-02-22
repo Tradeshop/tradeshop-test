@@ -23,32 +23,26 @@
  *
  */
 
-package org.shanerx.tradeshoptest;
+package org.shanerx.tradeshoptest.listeners;
 
-import org.bstats.bukkit.Metrics;
-import org.bukkit.plugin.PluginManager;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.shanerx.tradeshoptest.enumys.Setting;
-import org.shanerx.tradeshoptest.listeners.SuccessfulTradeListener;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+import org.shanerx.tradeshop.framework.events.PlayerShopCreateEvent;
+import org.shanerx.tradeshoptest.TradeShopTest;
 
-public class TradeShopTest extends JavaPlugin {
+import java.util.logging.Level;
 
-	private Metrics metrics;
+public class PlayerShopCreateListener implements Listener {
 
-	@Override
-	public void onEnable() {
+    private TradeShopTest plugin;
 
-		PluginManager pm = getServer().getPluginManager();
+    public PlayerShopCreateListener(TradeShopTest instance) {
+        plugin = instance;
+    }
 
-		pm.registerEvents(new SuccessfulTradeListener(this), this);
-
-		if (Setting.ALLOW_METRICS.getBoolean()) {
-			metrics = new Metrics(this);
-			getLogger().info("Metrics successfully initialized!");
-
-		} else {
-			getLogger().warning("Metrics are disabled! Please consider enabling them to support the authors!");
-		}
-
-	}
+    @EventHandler(priority = EventPriority.HIGH)
+    public void onPlayerShopCreate(PlayerShopCreateEvent event) {
+        plugin.getLogger().log(Level.INFO, "TradeShopTest has successfully seen a PlayerShopCreateEvent.\nPlayer: " + event.getPlayer() + "\nShop Location: " + event.getShop().getShopLocationAsSL().toString());
+    }
 }

@@ -1,6 +1,6 @@
 /*
  *
- *                         Copyright (c) 2016-2020
+ *                         Copyright (c) 2016-2019
  *                SparklingComet @ http://shanerx.org
  *               KillerOfPie @ http://killerofpie.github.io
  *
@@ -37,92 +37,92 @@ import java.util.logging.Level;
 
 public enum Setting {
 
-	ALLOW_METRICS("allow-metrics"),
-	ENABLE_DEBUG("enable-debug");
+    ALLOW_METRICS("allow-metrics"),
+    ENABLE_DEBUG("enable-debug");
 
-	private static TradeShopTest plugin = (TradeShopTest) Bukkit.getPluginManager().getPlugin("TradeShop");
-	private static File file = new File(plugin.getDataFolder(), "config.yml");
-	private static FileConfiguration config = YamlConfiguration.loadConfiguration(file);
-	String path;
+    private static TradeShopTest plugin = (TradeShopTest) Bukkit.getPluginManager().getPlugin("TradeShopTest");
+    private static File file = new File(plugin.getDataFolder(), "config.yml");
+    private static FileConfiguration config = YamlConfiguration.loadConfiguration(file);
+    String path;
 
-	Setting(String path) {
-		this.path = path;
-	}
+    Setting(String path) {
+        this.path = path;
+    }
 
-	public static Setting findSetting(String search) {
-		return valueOf(search.toUpperCase().replace("-", "_"));
-	}
+    public static Setting findSetting(String search) {
+        return valueOf(search.toUpperCase().replace("-", "_"));
+    }
 
-	private static void setDefaults() {
-		config = YamlConfiguration.loadConfiguration(file);
+    private static void setDefaults() {
+        config = YamlConfiguration.loadConfiguration(file);
 
-		addSetting(ALLOW_METRICS.path, true);
-		addSetting(ENABLE_DEBUG.path, false);
+        addSetting(ALLOW_METRICS.path, true);
+        addSetting(ENABLE_DEBUG.path, false);
 
-		save();
-	}
+        save();
+    }
 
-	private static void addSetting(String node, Object value) {
-		if (config.get(node) == null) {
-			config.set(node, value);
-		}
-	}
+    private static void addSetting(String node, Object value) {
+        if (config.get(node) == null) {
+            config.set(node, value);
+        }
+    }
 
-	private static void save() {
-		if (config != null)
-			try {
-				config.save(file);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-	}
+    private static void save() {
+        if (config != null)
+            try {
+                config.save(file);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+    }
 
-	public static void reload() {
-		try {
-			if (!plugin.getDataFolder().isDirectory()) {
-				plugin.getDataFolder().mkdirs();
-			}
-			if (!file.exists()) {
-				file.createNewFile();
-			}
-		} catch (IOException e) {
-			plugin.getLogger().log(Level.SEVERE, "Could not create Config file! Disabling plugin!", e);
-			plugin.getServer().getPluginManager().disablePlugin(plugin);
-		}
+    public static void reload() {
+        try {
+            if (!plugin.getDataFolder().isDirectory()) {
+                plugin.getDataFolder().mkdirs();
+            }
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+        } catch (IOException e) {
+            plugin.getLogger().log(Level.SEVERE, "Could not create Config file! Disabling plugin!", e);
+            plugin.getServer().getPluginManager().disablePlugin(plugin);
+        }
 
-		setDefaults();
-		config = YamlConfiguration.loadConfiguration(file);
-	}
+        setDefaults();
+        config = YamlConfiguration.loadConfiguration(file);
+    }
 
-	public static FileConfiguration getConfig() {
-		return config;
-	}
+    public static FileConfiguration getConfig() {
+        return config;
+    }
 
-	public String toPath() {
-		return path;
-	}
+    public String toPath() {
+        return path;
+    }
 
-	public Object getSetting() {
-		return config.get(toPath());
-	}
+    public Object getSetting() {
+        return config.get(toPath());
+    }
 
-	public String getString() {
-		return config.getString(toPath());
-	}
+    public String getString() {
+        return config.getString(toPath());
+    }
 
-	public List<String> getStringList() {
-		return config.getStringList(toPath());
-	}
+    public List<String> getStringList() {
+        return config.getStringList(toPath());
+    }
 
-	public int getInt() {
-		return config.getInt(toPath());
-	}
+    public int getInt() {
+        return config.getInt(toPath());
+    }
 
-	public double getDouble() {
-		return config.getDouble(toPath());
-	}
+    public double getDouble() {
+        return config.getDouble(toPath());
+    }
 
-	public boolean getBoolean() {
-		return config.getBoolean(toPath());
-	}
+    public boolean getBoolean() {
+        return config.getBoolean(toPath());
+    }
 }
