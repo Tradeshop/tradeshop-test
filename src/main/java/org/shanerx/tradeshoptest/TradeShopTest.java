@@ -28,35 +28,49 @@ package org.shanerx.tradeshoptest;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.shanerx.tradeshoptest.enumys.Setting;
-import org.shanerx.tradeshoptest.listeners.*;
+import org.shanerx.tradeshoptest.listeners.HopperShopAccessListener;
+import org.shanerx.tradeshoptest.listeners.PlayerPreTradeListener;
+import org.shanerx.tradeshoptest.listeners.PlayerPrepareTradeListener;
+import org.shanerx.tradeshoptest.listeners.PlayerShopChangeListener;
+import org.shanerx.tradeshoptest.listeners.PlayerShopCloseListener;
+import org.shanerx.tradeshoptest.listeners.PlayerShopCreateListener;
+import org.shanerx.tradeshoptest.listeners.PlayerShopDestroyListener;
+import org.shanerx.tradeshoptest.listeners.PlayerShopInventoryOpenListener;
+import org.shanerx.tradeshoptest.listeners.PlayerShopOpenListener;
+import org.shanerx.tradeshoptest.listeners.PlayerSuccessfulTradeListener;
+import org.shanerx.tradeshoptest.listeners.TradeShopReloadListener;
 
 public class TradeShopTest extends JavaPlugin {
 
-	private Metrics metrics;
+    private Metrics metrics;
+    private final int bstatsID = 0000;
 
 	@Override
 	public void onEnable() {
 
-		PluginManager pm = getServer().getPluginManager();
+        PluginManager pm = getServer().getPluginManager();
 
         pm.registerEvents(new HopperShopAccessListener(this), this);
+        pm.registerEvents(new PlayerPrepareTradeListener(this), this);
+        pm.registerEvents(new PlayerPreTradeListener(this), this);
         pm.registerEvents(new PlayerShopChangeListener(this), this);
         pm.registerEvents(new PlayerShopCloseListener(this), this);
         pm.registerEvents(new PlayerShopCreateListener(this), this);
         pm.registerEvents(new PlayerShopDestroyListener(this), this);
         pm.registerEvents(new PlayerShopInventoryOpenListener(this), this);
         pm.registerEvents(new PlayerShopOpenListener(this), this);
-        pm.registerEvents(new PlayerTradeListener(this), this);
-		pm.registerEvents(new SuccessfulTradeListener(this), this);
+        pm.registerEvents(new PlayerSuccessfulTradeListener(this), this);
+        pm.registerEvents(new TradeShopReloadListener(this), this);
 
+		/* Disabled for Test plugin since we won't be making a bstats page for it
 		if (Setting.ALLOW_METRICS.getBoolean()) {
-			metrics = new Metrics(this);
+			metrics = new Metrics(this, bstatsID);
 			getLogger().info("Metrics successfully initialized!");
 
 		} else {
 			getLogger().warning("Metrics are disabled! Please consider enabling them to support the authors!");
 		}
+		 */
 
 	}
 }

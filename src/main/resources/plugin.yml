@@ -1,15 +1,15 @@
 name: TradeShop-Test
-version: 0.0.1
+version: ${project.version}
 main: org.shanerx.tradeshoptest.TradeShopTest
 api-version: 1.14
 load: POSTWORLD
-depend: [TradeShop]
+depend: [ TradeShop ]
 
-authors: [Lori00, KillerOfPie]
-description: A new powerful trading plugin.
-website: https://www.tradeshop.github.io
+authors: [ Lori00, KillerOfPie ]
+description: Test/Reference Add-On Plugin for TradeShop.
+website: www.tradeshop.github.io
 
 commands:
   tradeshoptest:
     description: Core command for TradeShop-Test
-    aliases: [tst]
+    aliases: [ tst ]

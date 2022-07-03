@@ -35,7 +35,7 @@ import java.util.logging.Level;
 
 public class HopperShopAccessListener implements Listener {
 
-    private TradeShopTest plugin;
+    private final TradeShopTest plugin;
 
     public HopperShopAccessListener(TradeShopTest instance) {
         plugin = instance;
@@ -43,6 +43,6 @@ public class HopperShopAccessListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onHopperShopAccess(HopperShopAccessEvent event) {
-        plugin.getLogger().log(Level.INFO, "TradeShopTest has successfully seen a HopperShopAccessEvent.\nIs Forbidden: " + event.isForbidden() + "\nShop Location: " + event.getShop().getShopLocationAsSL().toString());
+        plugin.getLogger().log(Level.INFO, "TradeShopTest has successfully seen a " + event.getClass().getSimpleName() + ".\nIs Forbidden: " + event.isForbidden() + "\nShop Location: " + event.getShop().getShopLocationAsSL().serialize());
     }
 }

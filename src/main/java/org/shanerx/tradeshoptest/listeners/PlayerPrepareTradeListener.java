@@ -28,21 +28,21 @@ package org.shanerx.tradeshoptest.listeners;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.shanerx.tradeshop.framework.events.PlayerTradeEvent;
+import org.shanerx.tradeshop.framework.events.PlayerPrepareTradeEvent;
 import org.shanerx.tradeshoptest.TradeShopTest;
 
 import java.util.logging.Level;
 
-public class PlayerTradeListener implements Listener {
+public class PlayerPrepareTradeListener implements Listener {
 
-    private TradeShopTest plugin;
+    private final TradeShopTest plugin;
 
-    public PlayerTradeListener(TradeShopTest instance) {
+    public PlayerPrepareTradeListener(TradeShopTest instance) {
         plugin = instance;
     }
 
     @EventHandler(priority = EventPriority.HIGH)
-    public void onPlayerTrade(PlayerTradeEvent event) {
-        plugin.getLogger().log(Level.INFO, "TradeShopTest has successfully seen a PlayerTradeEvent.\nPlayer: " + event.getPlayer() + "\nShop Location: " + event.getShop().getShopLocationAsSL().toString());
+    public void onPlayerShopChange(PlayerPrepareTradeEvent event) {
+        plugin.getLogger().log(Level.INFO, "TradeShopTest has successfully seen a " + event.getClass().getSimpleName() + ".\nPlayer: " + event.getPlayer().getName() + "\nShop Location: " + event.getShop().getShopLocationAsSL().serialize());
     }
 }

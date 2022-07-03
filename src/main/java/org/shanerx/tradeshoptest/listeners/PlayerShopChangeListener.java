@@ -35,7 +35,7 @@ import java.util.logging.Level;
 
 public class PlayerShopChangeListener implements Listener {
 
-    private TradeShopTest plugin;
+    private final TradeShopTest plugin;
 
     public PlayerShopChangeListener(TradeShopTest instance) {
         plugin = instance;
@@ -43,6 +43,6 @@ public class PlayerShopChangeListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onPlayerShopChange(PlayerShopChangeEvent event) {
-        plugin.getLogger().log(Level.INFO, "TradeShopTest has successfully seen a PlayerShopChangeEvent.\nPlayer: " + event.getPlayer() + "\nShop Location: " + event.getShop().getShopLocationAsSL().toString());
+        plugin.getLogger().log(Level.INFO, "TradeShopTest has successfully seen a " + event.getClass().getSimpleName() + ".\nPlayer: " + event.getPlayer().getName() + "\nShop Location: " + event.getShop().getShopLocationAsSL().serialize());
     }
 }
