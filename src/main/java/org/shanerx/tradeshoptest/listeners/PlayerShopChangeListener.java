@@ -43,6 +43,8 @@ public class PlayerShopChangeListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onPlayerShopChange(PlayerShopChangeEvent event) {
-        plugin.getLogger().log(Level.INFO, "TradeShopTest has successfully seen a " + event.getClass().getSimpleName() + ".\nPlayer: " + event.getPlayer().getName() + "\nShop Location: " + event.getShop().getShopLocationAsSL().serialize());
+        plugin.getLogger().log(Level.INFO, "TradeShopTest has successfully seen a " + event.getClass().getSimpleName() + "." +
+                "\n  Player: " + event.getPlayer().getName() +
+                "\n  Shop Location: " + event.getShop().getShopLocationAsSL().serialize());
     }
 }

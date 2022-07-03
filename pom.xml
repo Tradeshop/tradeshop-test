@@ -31,9 +31,10 @@
 
     <groupId>org.shanerx</groupId>
     <artifactId>tradeshop-test</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.2-DEV</version>
     <name>TradeShop-Test</name>
-    <url>http://maven.apache.org</url>
+    <url>https://github.com/Tradeshop/tradeshop-test</url>
+    <description>Test/Reference Add-On Plugin for TradeShop.</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -43,6 +44,18 @@
     <build>
         <defaultGoal>install</defaultGoal>
         <finalName>${project.artifactId}-${project.version}-${maven.build.timestamp}</finalName>
+
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <resources>
+            <resource>
+                <targetPath>.</targetPath>
+                <filtering>true</filtering>
+                <directory>${basedir}/src/main/resources/</directory>
+                <includes>
+                    <include>plugin.yml</include>
+                </includes>
+            </resource>
+        </resources>
 
         <plugins>
             <plugin>
@@ -82,12 +95,6 @@
                 </executions>
             </plugin>
         </plugins>
-
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-        </resources>
 
 
     </build>

@@ -1,4 +1,4 @@
-name: TradeShop-Test
+name: ${project.name}
 version: ${project.version}
 main: org.shanerx.tradeshoptest.TradeShopTest
 api-version: 1.14
@@ -6,8 +6,8 @@ load: POSTWORLD
 depend: [ TradeShop ]
 
 authors: [ Lori00, KillerOfPie ]
-description: Test/Reference Add-On Plugin for TradeShop.
-website: www.tradeshop.github.io
+description: ${project.description}
+website: ${project.url}
 
 commands:
   tradeshoptest:
